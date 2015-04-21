@@ -272,11 +272,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\客戶資料\Index.cshtml" />
+    <Content Include="Views\客戶資料\Details.cshtml" />
+    <Content Include="Views\客戶資料\Create.cshtml" />
+    <Content Include="Views\客戶資料\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\客戶聯絡人\" />
-    <Folder Include="Views\客戶資料\" />
     <Folder Include="Views\客戶銀行資訊\" />
   </ItemGroup>
   <ItemGroup>
