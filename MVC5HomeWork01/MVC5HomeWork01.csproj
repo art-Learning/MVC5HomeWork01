@@ -163,6 +163,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\客戶聯絡人Controller.cs" />
+    <Compile Include="Controllers\客戶資料Controller.cs" />
+    <Compile Include="Controllers\客戶銀行資訊Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,6 +275,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\客戶聯絡人\" />
+    <Folder Include="Views\客戶資料\" />
+    <Folder Include="Views\客戶銀行資訊\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
