@@ -45,7 +45,6 @@ namespace MVC5HomeWork01.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 客戶資料 userinfo = new 客戶資料();
                 userinfo.客戶名稱 = collection["客戶名稱"];
                 userinfo.統一編號 = collection["統一編號"];
@@ -85,7 +84,6 @@ namespace MVC5HomeWork01.Controllers
         {
             try
             {
-                // TODO: Add update logic here
                 客戶資料 userinfo = new 客戶資料();
                 userinfo = db.客戶資料.Find(id);
                 userinfo.客戶名稱 = collection["客戶名稱"];

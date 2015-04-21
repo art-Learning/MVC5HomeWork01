@@ -4,10 +4,10 @@
     ViewBag.Title = "客戶資料列表";
 }
 
-<h2>Index</h2>
+<h2>客戶資料列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增客戶", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.客戶名稱)
+            @Html.ActionLink(item.客戶名稱, "Index", "客戶聯絡人", new { id = item.Id }, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.統一編號)

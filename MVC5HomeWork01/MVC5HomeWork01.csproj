@@ -276,10 +276,13 @@
     <Content Include="Views\客戶資料\Details.cshtml" />
     <Content Include="Views\客戶資料\Create.cshtml" />
     <Content Include="Views\客戶資料\Edit.cshtml" />
+    <Content Include="Views\客戶聯絡人\Index.cshtml" />
+    <Content Include="Views\客戶聯絡人\Details.cshtml" />
+    <Content Include="Views\客戶聯絡人\Create.cshtml" />
+    <Content Include="Views\客戶聯絡人\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\客戶聯絡人\" />
     <Folder Include="Views\客戶銀行資訊\" />
   </ItemGroup>
   <ItemGroup>
