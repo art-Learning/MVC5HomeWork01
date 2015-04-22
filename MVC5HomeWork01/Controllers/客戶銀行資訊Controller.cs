@@ -17,9 +17,9 @@ namespace MVC5HomeWork01.Controllers
         {
             IQueryable<客戶銀行資訊> bankInfo;
             if (id == null) {
-                bankInfo = db.客戶銀行資訊;
+                bankInfo = db.客戶銀行資訊.Where(x => x.是否已刪除 == false);
             } else {
-                bankInfo = db.客戶銀行資訊.Where(x => x.客戶Id == id);
+                bankInfo = db.客戶銀行資訊.Where(x => x.客戶Id == id && x.是否已刪除 == false);
             }
 
             return View(bankInfo.ToList());
@@ -121,7 +121,9 @@ namespace MVC5HomeWork01.Controllers
             if (binfo == null) {
                 return HttpNotFound();
             }
-            db.客戶銀行資訊.Remove(binfo);
+            //採用【是否已刪除】取代刪除資料
+            //db.客戶銀行資訊.Remove(binfo);
+            if (!binfo.是否已刪除) { binfo.是否已刪除 = true; }
             db.SaveChanges();
 
             //TODO 刪除資料後，需判斷如果還有該公司資料，則返回列表頁；否則返回公司明細頁

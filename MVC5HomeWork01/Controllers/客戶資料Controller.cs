@@ -16,7 +16,7 @@ namespace MVC5HomeWork01.Controllers
         // GET: 客戶資料
         public ActionResult Index()
         {
-            var CustomerList = db.客戶資料;
+            var CustomerList = db.客戶資料.Where(x=>x.是否已刪除==false);
             return View(CustomerList.ToList());
         }
 
@@ -113,7 +113,25 @@ namespace MVC5HomeWork01.Controllers
             if (userinfo == null) {
                 return HttpNotFound();
             }
-            db.客戶資料.Remove(userinfo);
+
+            //移除相關聯的銀行資訊
+            var bankinfos = userinfo.客戶銀行資訊.ToList();
+            //db.客戶銀行資訊.RemoveRange(bankinfos);
+            foreach (var binfo in bankinfos) {
+                if (!binfo.是否已刪除) { binfo.是否已刪除 = true; }
+            }
+
+            //移除相關聯的聯絡人資訊
+            var Cntas = userinfo.客戶聯絡人.ToList();
+            //db.客戶聯絡人.RemoveRange(Cntas);
+            foreach (var cnta in Cntas) {
+                if (!cnta.是否已刪除) { cnta.是否已刪除 = true; }
+            }
+
+            //移除客戶資料
+            //db.客戶資料.Remove(userinfo);
+            if (!userinfo.是否已刪除) { userinfo.是否已刪除 = true; }
+
             db.SaveChanges();
 
             return RedirectToAction("Index");

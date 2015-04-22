@@ -17,9 +17,9 @@ namespace MVC5HomeWork01.Controllers
             //TODO 篩選條件需增加：取得未作廢的資料
             IQueryable<客戶聯絡人> List;
             if (id == null) {
-                List = db.客戶聯絡人;
+                List = db.客戶聯絡人.Where(x => x.是否已刪除 == false);
             } else {
-                List = db.客戶聯絡人.Where(x => x.客戶Id == id);
+                List = db.客戶聯絡人.Where(x => x.客戶Id == id && x.是否已刪除 == false);
             }
             return View(List.ToList());
         }
@@ -113,9 +113,6 @@ namespace MVC5HomeWork01.Controllers
         // GET: 客戶聯絡人/Delete/5
         public ActionResult Delete(int? id)
         {
-            //TODO 刪除發生錯誤，須修正，一併刪除關聯的資料表資料(客戶聯絡人、客戶銀行資訊)
-            //TODO 增加作廢欄位，刪除改為使用作廢，前台不顯示。
-
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -124,7 +121,10 @@ namespace MVC5HomeWork01.Controllers
             if (cnta == null) {
                 return HttpNotFound();
             }
-            db.客戶聯絡人.Remove(cnta);
+
+            //不允許直接刪除資料，以作廢代替
+            //db.客戶聯絡人.Remove(cnta);
+            if (!cnta.是否已刪除) { cnta.是否已刪除 = true; }
             db.SaveChanges();
 
             //TODO 刪除聯絡人後，導向頁面需重新確認
