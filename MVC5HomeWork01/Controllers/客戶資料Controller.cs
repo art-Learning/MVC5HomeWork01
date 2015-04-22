@@ -75,6 +75,7 @@ namespace MVC5HomeWork01.Controllers
             if (userinfo == null) {
                 return HttpNotFound();
             }
+            
             return View(userinfo);
         }
 
@@ -93,7 +94,7 @@ namespace MVC5HomeWork01.Controllers
                 userinfo.地址 = collection["地址"];
                 userinfo.Email = collection["Email"];
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "客戶資料", new { id = id });
             }
             catch
             {

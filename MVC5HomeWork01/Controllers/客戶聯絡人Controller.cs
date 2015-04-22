@@ -14,13 +14,13 @@ namespace MVC5HomeWork01.Controllers
         // GET: 客戶聯絡人
         public ActionResult Index(int? id)
         {
+            //TODO 篩選條件需增加：取得未作廢的資料
             IQueryable<客戶聯絡人> List;
             if (id == null) {
                 List = db.客戶聯絡人;
             } else {
                 List = db.客戶聯絡人.Where(x => x.客戶Id == id);
             }
-
             return View(List.ToList());
         }
 
@@ -64,7 +64,7 @@ namespace MVC5HomeWork01.Controllers
                 db.客戶聯絡人.Add(cnta);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "客戶聯絡人", new { id = collection["客戶Id"] });
             }
             catch
             {
@@ -102,7 +102,7 @@ namespace MVC5HomeWork01.Controllers
                 cnta.手機 = collection["手機"];
                 cnta.電話 = collection["電話"];
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "客戶聯絡人", new { id = id });
             }
             catch
             {
@@ -113,6 +113,9 @@ namespace MVC5HomeWork01.Controllers
         // GET: 客戶聯絡人/Delete/5
         public ActionResult Delete(int? id)
         {
+            //TODO 刪除發生錯誤，須修正，一併刪除關聯的資料表資料(客戶聯絡人、客戶銀行資訊)
+            //TODO 增加作廢欄位，刪除改為使用作廢，前台不顯示。
+
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -124,7 +127,8 @@ namespace MVC5HomeWork01.Controllers
             db.客戶聯絡人.Remove(cnta);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            //TODO 刪除聯絡人後，導向頁面需重新確認
+            return RedirectToAction("index");
         }
 
     }
