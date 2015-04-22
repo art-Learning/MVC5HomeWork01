@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Requird.cs" />
     <Compile Include="Models\V_總覽.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
     </Compile>
