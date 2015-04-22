@@ -22,7 +22,7 @@ namespace MVC5HomeWork01.Models
         [Required]
         public string 姓名 { get; set; }
         [Required]
-        [RegularExpression(@"^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$")]
+        [RegularExpression(@"^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$")]
         public string Email { get; set; }
         [Required]
         [RegularExpression(@"^\d{4}-\d{6}$")]

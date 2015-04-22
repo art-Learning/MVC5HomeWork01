@@ -36,7 +36,7 @@ namespace MVC5HomeWork01.Models
         [Required]
         public string 地址 { get; set; }
         [Required]
-        [RegularExpression(@"/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/")]
+        [RegularExpression(@"^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$")]
         public string Email { get; set; }
         public bool 是否已刪除 { get; set; }
     
